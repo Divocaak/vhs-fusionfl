@@ -1,5 +1,5 @@
 <script>
-	import CustomButton from '../lib/CustomButton.svelte';
+	import CustomButton from '$lib/CustomButton.svelte';
 </script>
 
 <svelte:head>
@@ -62,6 +62,9 @@
 		--black: black;
 		--white: white;
         --primary: #cd920c;
+		--primary-high: #c5ae6a;
+		--info: #288ed8;
+		--grey: #eeeeee;
 	}
 
 	:global(html) {

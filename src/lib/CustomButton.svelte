@@ -1,20 +1,24 @@
 <script>
 	export let path;
+	export let isInfo = false;
 </script>
 
-<a href={path}><slot /></a>
+<a href={path} style="background-color: var(--{isInfo ? "info" : "primary"})"><slot /></a>
 
 <style>
 	a {
-		background-color: var(--primary);
 		color: var(--white);
 		font-weight: bold;
 		text-transform: uppercase;
-        text-decoration: none;
-        padding: 2px 10px;
-        margin: 5px;
-        position: relative;
-        display: block;
-        font-style: oblique;
+		text-decoration: none;
+		padding: 2px 10px;
+		margin: 5px;
+		position: relative;
+		display: block;
+		font-style: oblique;
+	}
+
+	/* TODO hover anim */
+	a:hover {
 	}
 </style>
