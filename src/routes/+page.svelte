@@ -1,5 +1,6 @@
 <script>
 	import CustomButton from '$lib/CustomButton.svelte';
+	import Article from '$lib/Article.svelte';
 
 	const closestEvent = {
 		label: 'fusion 26 x ring 10',
@@ -7,22 +8,56 @@
 		place: 'Brno, Zoner BOBYHALL',
 		desc: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Pellentesque pretium lectus id turpis. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
 	};
+
+	const articles = [
+		{
+			id: '1',
+			label:
+				'Spolykala šestačtyřicet ibuprofenů. Počet smrtelných předávkování u mladých strmě roste',
+			tags: ['FUSION 26', 'Soutěž']
+		},
+		{
+			id: '2',
+			label: 'Okupovaná území Rusku, zbytek do NATO. O „výbušném plánu“ Aliance píší v Itálii',
+			tags: ['O tag víc', 'FUSION 26', 'Soutěž']
+		},
+		{
+			id: '3',
+			label: 'Hokejový fanoušek nakopl policistu, další hajloval, oba putovali za mříže',
+			tags: ['A jeden uberem']
+		}
+	];
 </script>
 
 <div class="bg-img-container">
 	<div class="next-event-container">
-		<div class="row">
-			<div class="col-6">asd</div>
-			<div class="col-6">
-				<CustomButton path="/">
-					<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
-				</CustomButton>
-				<CustomButton path="/" isInfo={true}>
-					<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
-				</CustomButton>
-			</div>
+		<div class="texts">
+			<p class="label">{closestEvent.label}</p>
+			<p class="ww">{closestEvent.date}<span>|</span>{closestEvent.place}</p>
+			<p class="desc">{closestEvent.desc}</p>
+		</div>
+		<div class="buttons">
+			<CustomButton path="/">
+				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
+			</CustomButton><br />
+			<CustomButton path="/" isInfo={true}>
+				<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
+			</CustomButton>
+		</div>
+		<div class="button">
+			<CustomButton path="/"><i class="bi bi-person-badge-fill pe-2"></i>fightcard</CustomButton>
 		</div>
 	</div>
+</div>
+
+<div class="content">
+	<h1>novinky</h1>
+	<div class="articles">
+		{#each articles as article}
+			<Article {...article} />
+		{/each}
+	</div>
+	<div class="asd">asd</div>
 </div>
 
 <style>
@@ -39,19 +74,116 @@
 
 	.next-event-container {
 		position: absolute;
-		bottom: 0;
-		left: 20%;
-		width: 50%;
-		height: 30%;
+		bottom: -15%;
+
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+
+		width: 70%;
+		height: 40%;
 		background-color: var(--white);
 		border: solid 2px var(--primary);
 		border-left: solid 10px var(--primary);
 		transform: skewX(-20deg) scaleY(cos(-20deg));
+		display: inline-flex;
+		padding: 2% 7%;
 	}
 
-	.next-event-container .row {
+	.next-event-container .buttons,
+	.texts,
+	.button {
 		transform: skewX(20deg) scaleY(cos(20deg));
-		background: red;
-		margin: 0px 20px;
+		height: 100%;
 	}
+
+	.next-event-container .texts {
+		width: 60%;
+	}
+
+	/* TODO */
+	.next-event-container .buttons {
+		background-color: blue;
+		width: 40%;
+	}
+
+	.next-event-container .texts .label,
+	.ww {
+		font-weight: bold;
+		margin: 0;
+	}
+
+	.next-event-container .texts .label {
+		width: fit-content;
+		text-transform: uppercase;
+		color: var(--black);
+		border-bottom: 1px solid var(--black);
+		font-size: 2rem;
+	}
+
+	.next-event-container .texts .ww {
+		color: var(--primary);
+		line-height: normal;
+		font-size: 1.3em;
+	}
+
+	.next-event-container .texts .ww span {
+		position: relative;
+		top: 0.2rem;
+		margin: 0 0.5rem;
+		font-size: 1.7rem;
+	}
+
+	.next-event-container .texts .desc {
+		padding-top: 1rem;
+		padding-right: 1rem;
+		font-size: 0.8rem;
+		display: -webkit-box;
+		max-width: 100%;
+		-webkit-line-clamp: 5;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	/* TODO */
+	.next-event-container .button {
+		position: absolute;
+		top: 93%;
+		left: 50%;
+		height: 100%;
+		width: 100;
+	}
+
+	.content {
+		margin: 12% 10% 0% 10%;
+		display: block;
+	}
+
+	.content h1 {
+		text-transform: uppercase;
+		font-style: oblique;
+		font-weight: bold;
+	}
+
+	.content .articles {
+		background: green;
+		position: relative;
+        width: 100%;
+        height: 100%;
+		display: block;
+	}
+
+	/* .content .asd {
+		float: unset;
+		position: relative;
+        display: block;
+		width: 100%;
+		height: 30vh;
+		background: red;
+		/* background-image: url('/imgs/4.jpg');
+		background-position: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+	} */
 </style>

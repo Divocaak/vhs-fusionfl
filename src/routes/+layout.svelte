@@ -72,6 +72,10 @@
 		overflow-x: hidden;
 	}
 
+	:global(body){
+		background: var(--white);
+	}
+
 	nav {
 		border-bottom: 3px solid var(--primary);
 	}

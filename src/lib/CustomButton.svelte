@@ -14,7 +14,6 @@
 		padding: 2px 10px;
 		margin: 5px;
 		position: relative;
-		display: block;
 		font-style: oblique;
 	}
 
