@@ -1,9 +1,26 @@
 <script>
 	import CustomButton from '$lib/CustomButton.svelte';
 	import Article from '$lib/Article.svelte';
+	import { tweened } from 'svelte/motion';
+
+	/* TODO rework date format */
+	const expected = new Date('Jan 5, 2030 15:37:25').getTime();
+	const now = new Date().getTime();
+	const distance = tweened(expected - now);
+
+	setInterval(() => {
+		if ($distance > 0) {
+			$distance -= 1000;
+		}
+	}, 1000);
+	$: days = Math.floor($distance / (1000 * 60 * 60 * 24));
+	$: hours = Math.floor(($distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	$: minutes = Math.floor(($distance % (1000 * 60 * 60)) / (1000 * 60));
+	$: seconds = Math.floor(($distance % (1000 * 60)) / 1000);
 
 	const closestEvent = {
 		label: 'fusion 26 x ring 10',
+		/* TODO rework date format */
 		date: '2. 2. 2024',
 		place: 'Brno, Zoner BOBYHALL',
 		desc: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Pellentesque pretium lectus id turpis. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
@@ -40,12 +57,14 @@
 			<CustomButton path="/">
 				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
 			</CustomButton><br />
-			<CustomButton path="/" isInfo={true}>
+			<CustomButton path="/" clr="info">
 				<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
 			</CustomButton>
 		</div>
 		<div class="button">
-			<CustomButton path="/"><i class="bi bi-person-badge-fill pe-2"></i>fightcard</CustomButton>
+			<CustomButton path="/" clr="black">
+				<i class="bi bi-person-badge-fill pe-2"></i>fightcard
+			</CustomButton>
 		</div>
 	</div>
 </div>
@@ -53,11 +72,29 @@
 <div class="content">
 	<h1>novinky</h1>
 	<div class="articles">
+		ads
 		{#each articles as article}
 			<Article {...article} />
 		{/each}
 	</div>
-	<div class="asd">asd</div>
+	<div class="banner">
+		<div class="button">
+			<CustomButton path="/" clr="black">
+				<i class="bi bi-play-circle-fill pe-2"></i>pusť si aftermovie
+			</CustomButton>
+		</div>
+	</div>
+</div>
+
+<div class="time-banner">
+	<span class="countdown">{days}</span>dní
+	<span class="countdown">{hours}</span>hod
+	<span class="countdown">{minutes}</span>min
+	<span class="countdown">{seconds}</span>sek
+	<CustomButton path="/" clr="white" txtClr="info">
+		<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
+		<span slot="tail">jen 490 kč</span>
+	</CustomButton>
 </div>
 
 <style>
@@ -92,8 +129,8 @@
 	}
 
 	.next-event-container .buttons,
-	.texts,
-	.button {
+	.next-event-container .texts,
+	.next-event-container .button {
 		transform: skewX(20deg) scaleY(cos(20deg));
 		height: 100%;
 	}
@@ -109,7 +146,7 @@
 	}
 
 	.next-event-container .texts .label,
-	.ww {
+	.next-event-container .texts .ww {
 		font-weight: bold;
 		margin: 0;
 	}
@@ -152,12 +189,11 @@
 		top: 93%;
 		left: 50%;
 		height: 100%;
-		width: 100;
+		width: 100%;
 	}
 
 	.content {
 		margin: 12% 10% 0% 10%;
-		display: block;
 	}
 
 	.content h1 {
@@ -167,23 +203,44 @@
 	}
 
 	.content .articles {
-		background: green;
 		position: relative;
-        width: 100%;
-        height: 100%;
-		display: block;
+		height: 50vh;
 	}
 
-	/* .content .asd {
-		float: unset;
+	.content .banner {
+		margin-top: 2rem;
 		position: relative;
-        display: block;
 		width: 100%;
 		height: 30vh;
-		background: red;
-		/* background-image: url('/imgs/4.jpg');
+		background-image: url('/imgs/4.jpg');
 		background-position: 0;
 		background-repeat: no-repeat;
 		background-size: cover;
-	} */
+	}
+
+	.content .banner .button {
+		position: absolute;
+		bottom: 10%;
+		width: 100%;
+		text-align: center;
+	}
+
+	.time-banner {
+		margin-top: 2rem;
+		position: relative;
+		width: 100%;
+		background-color: var(--info);
+		color: var(--white);
+		text-align: center;
+		font-weight: lighter;
+		padding: 2rem 0;
+	}
+
+	.time-banner .countdown {
+		font-weight: bold;
+		font-style: oblique;
+		font-size: 1.75rem;
+		padding-left: 2rem;
+		padding-right: 0.6rem;
+	}
 </style>
