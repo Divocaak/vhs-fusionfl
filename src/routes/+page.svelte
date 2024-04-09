@@ -70,7 +70,7 @@
 </div>
 
 <div class="content">
-	<h1>novinky</h1>
+	<h1 class="lead">novinky</h1>
 	<div class="articles">
 		ads
 		{#each articles as article}
@@ -97,7 +97,33 @@
 	</CustomButton>
 </div>
 
+<div class="partners-banner row">
+	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
+</div>
+
+<div class="subscribe-banner">
+	<div>
+		<p class="lead">nenechte si ujít novinky</p>
+		<p>Získáte náskok při předprodeji vstupenek</p>
+	</div>
+	<form>
+		<CustomButton path="/">
+            <input slot="head" type="email" placeholder="Váš email"/>
+            <i class="bi bi-envelope pe-2"></i>přihlásit odběr
+        </CustomButton>
+	</form>
+</div>
+
 <style>
+	:root {
+		--section-spacer: 2rem;
+	}
+
 	.bg-img-container {
 		position: relative;
 		width: 100vw;
@@ -121,8 +147,10 @@
 		width: 70%;
 		height: 40%;
 		background-color: var(--white);
+
 		border: solid 2px var(--primary);
 		border-left: solid 10px var(--primary);
+
 		transform: skewX(-20deg) scaleY(cos(-20deg));
 		display: inline-flex;
 		padding: 2% 7%;
@@ -196,19 +224,13 @@
 		margin: 12% 10% 0% 10%;
 	}
 
-	.content h1 {
-		text-transform: uppercase;
-		font-style: oblique;
-		font-weight: bold;
-	}
-
 	.content .articles {
 		position: relative;
 		height: 50vh;
 	}
 
 	.content .banner {
-		margin-top: 2rem;
+		margin-top: var(--section-spacer);
 		position: relative;
 		width: 100%;
 		height: 30vh;
@@ -226,7 +248,7 @@
 	}
 
 	.time-banner {
-		margin-top: 2rem;
+		margin-top: var(--section-spacer);
 		position: relative;
 		width: 100%;
 		background-color: var(--info);
@@ -243,4 +265,49 @@
 		padding-left: 2rem;
 		padding-right: 0.6rem;
 	}
+
+	.partners-banner {
+		margin-top: var(--section-spacer);
+		background-color: var(--grey);
+		width: 100%;
+		height: fit-content;
+		padding: 2rem 4rem;
+	}
+
+	.partners-banner div {
+		height: fit-content;
+		padding: 3rem;
+	}
+
+	.subscribe-banner {
+		position: absolute;
+		display: inline-flex;
+		width: 100%;
+		height: 15vh;
+
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+
+		padding: 0 8rem;
+	}
+
+	.subscribe-banner p {
+		color: var(--primary);
+		margin: 0;
+	}
+
+	.subscribe-banner div,
+	.subscribe-banner form {
+        position: relative;
+		height: fit-content;
+		width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+	}
+
+    .subscribe-banner form input{
+        border: solid 2px var(--black);
+    }
 </style>

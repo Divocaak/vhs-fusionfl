@@ -9,7 +9,7 @@
 <div class="article-wrapper">
 	<div class="bg-img" style="background-image: url('/imgs/{id}.jpg');"></div>
 	<div class="content">
-		<p class="lead">{label}</p>
+		<p>{label}</p>
 		{#each tags as tag}
 			<ArticleTag label={tag} />
 		{/each}
@@ -37,6 +37,7 @@
 	.content p {
 		color: var(--black);
 		font-weight: bold;
+		font-size: 1.2rem;
 	}
 
     .content a{

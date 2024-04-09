@@ -51,7 +51,9 @@
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">turnaje</a>
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">aktuality</a>
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">merch</a>
-			<CustomButton path="/"><i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku</CustomButton>
+			<CustomButton path="/"
+				><i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku</CustomButton
+			>
 		</div>
 	</div>
 </nav>
@@ -61,7 +63,7 @@
 	:root {
 		--black: black;
 		--white: white;
-        --primary: #cd920c;
+		--primary: #cd920c;
 		--primary-high: #c5ae6a;
 		--info: #288ed8;
 		--grey: #eeeeee;
@@ -72,15 +74,23 @@
 		overflow-x: hidden;
 	}
 
-	:global(body){
+	:global(body) {
 		background: var(--white);
+	}
+
+	:global(.lead) {
+		color: var(--black) !important;
+		text-transform: uppercase !important;
+		font-style: oblique !important;
+		font-weight: bold !important;
+		font-size: 2rem !important;
 	}
 
 	nav {
 		border-bottom: 3px solid var(--primary);
 	}
 
-    .nav-item{
-        color: var(--black);
-    }
+	.nav-item {
+		color: var(--black);
+	}
 </style>

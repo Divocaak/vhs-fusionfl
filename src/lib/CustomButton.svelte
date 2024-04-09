@@ -6,6 +6,11 @@
 	export let tailTxtClr = 'white';
 </script>
 
+{#if $$slots.head}
+<span class="head">
+	<slot name="head" />
+</span>
+{/if}
 <a href={path} style="--clr: var(--{clr}); --txtClr: var(--{txtClr})"><slot /></a>
 {#if $$slots.tail}
 	<span class="tail" style="--tailClr: var(--{tailClr}); --tailTxtClr: var(--{tailTxtClr})">
@@ -15,7 +20,6 @@
 
 <style>
 	:root {
-		--size: 1rem;
 		--ml: 5px;
 	}
 
@@ -29,11 +33,11 @@
 	a,
 	.tail {
 		position: relative;
-		padding: 2px 10px;
-		font-size: var(--size);
+		font-size: 1.4rem;
 		text-transform: uppercase;
 		font-weight: bold;
 		font-style: oblique;
+		padding: 0.5rem 1rem;
 	}
 
 	/* TODO hover anim */
@@ -44,5 +48,9 @@
 		margin-left: calc(var(--ml) * -1);
 		background-color: var(--tailClr);
 		color: var(--tailTxtClr);
+	}
+
+	.head{
+		
 	}
 </style>
