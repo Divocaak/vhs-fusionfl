@@ -51,13 +51,53 @@
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">turnaje</a>
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">aktuality</a>
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">merch</a>
-			<CustomButton path="/"
-				><i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku</CustomButton
-			>
+			<CustomButton path="/" fontSize="initial">
+				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
+			</CustomButton>
 		</div>
 	</div>
 </nav>
 <slot />
+<footer>
+	<div class="row">
+		<div class="col-6 about">
+			<img src="/logo.jpg" alt="logo" />
+			<p>
+				FUSION FIGHT LEAGUE<br />
+				galavečery bojových sportů.<br />
+				Muay thai, MMA, box a jedinečné<br />
+				FUSION rules
+			</p>
+		</div>
+		<div class="col-4 navigation">
+			<p class="clmn">rychlé<br />odkazy</p>
+			<ul class="clmn">
+				<li><a href="/">vstupenky</a></li>
+				<li><a href="/">turnaje</a></li>
+				<li><a href="/">naši bojovníci</a></li>
+				<li><a href="/">novinky</a></li>
+				<li><a href="/">organizace</a></li>
+			</ul>
+			<ul class="clmn">
+				<li><a href="/">home</a></li>
+				<li><a href="/">galerie</a></li>
+				<li><a href="/">kontakt</a></li>
+			</ul>
+		</div>
+		<div class="col-2 socials">
+			<a href="/"><i class="bi bi-instagram"></i></a>
+			<a href="/"><i class="bi bi-facebook"></i></a>
+			<a href="/"><i class="bi bi-youtube"></i></a>
+			<p>FusionFightLeagueCZ</p>
+		</div>
+	</div>
+	<p id="settings">
+		<span>FIGHT PROMO s.r.o.</span>&nbsp;<a href="/">Ochrana osobních údajů</a>&nbsp;|&nbsp;<a
+			href="/">Správa nastavení soukromí</a
+		>
+	</p>
+	<p id="copyright">&copy; Copyright FIGHT PROMO s.r.o., All Rights Reserved.</p>
+</footer>
 
 <style lang="scss">
 	:root {
@@ -67,6 +107,7 @@
 		--primary-high: #c5ae6a;
 		--info: #288ed8;
 		--grey: #eeeeee;
+		--content-side-margin: 12%;
 	}
 
 	:global(html) {
@@ -92,5 +133,84 @@
 
 	.nav-item {
 		color: var(--black);
+	}
+
+	footer {
+		display: block;
+		width: 100%;
+		/* height: fit-content; */
+		background-color: var(--black);
+		color: var(--white);
+		padding-top: 2rem;
+	}
+
+	footer div.row {
+		margin: 0 var(--content-side-margin);
+	}
+
+	footer .about {
+		line-height: 1rem;
+	}
+
+	footer .about img {
+		width: 20%;
+	}
+
+	footer .navigation .clmn {
+		float: inline-start;
+	}
+
+	footer .navigation p {
+		position: relative;
+		top: 7px;
+		text-transform: uppercase;
+		font-weight: bold;
+		line-height: 0.8rem;
+		letter-spacing: -1px;
+	}
+
+	footer .navigation li {
+		list-style-type: '> ';
+	}
+
+	/* TODO hover */
+	footer .navigation a {
+		position: relative;
+		top: 1px;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: var(--white);
+	}
+
+	/* TODO hover */
+	footer .socials a {
+		color: var(--white);
+		font-size: 2rem;
+	}
+
+	footer .socials p {
+		color: var(--primary);
+	}
+
+	footer #settings {
+		margin: 1rem var(--content-side-margin);
+	}
+
+	footer #settings span {
+		color: var(--primary);
+	}
+
+	/* TODO hover */
+	footer #settings a {
+		text-decoration: none;
+		color: var(--white);
+	}
+
+	footer #copyright {
+		display: block;
+		text-align: center;
+		border-top: 1px solid var(--grey);
+		margin: 0;
+		padding: 0.5rem 0;
 	}
 </style>

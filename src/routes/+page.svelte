@@ -72,7 +72,6 @@
 <div class="content">
 	<h1 class="lead">novinky</h1>
 	<div class="articles">
-		ads
 		{#each articles as article}
 			<Article {...article} />
 		{/each}
@@ -91,7 +90,8 @@
 	<span class="countdown">{hours}</span>hod
 	<span class="countdown">{minutes}</span>min
 	<span class="countdown">{seconds}</span>sek
-	<CustomButton path="/" clr="white" txtClr="info">
+	<!-- TODO spacer -->
+	<CustomButton path="/" clr="white" txtClr="info" display="inline-block">
 		<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
 		<span slot="tail">jen 490 kč</span>
 	</CustomButton>
@@ -112,10 +112,10 @@
 		<p>Získáte náskok při předprodeji vstupenek</p>
 	</div>
 	<form>
-		<CustomButton path="/">
-            <input slot="head" type="email" placeholder="Váš email"/>
-            <i class="bi bi-envelope pe-2"></i>přihlásit odběr
-        </CustomButton>
+		<CustomButton path="/" display="inline-block" fontSize="1.2rem">
+			<input slot="head" type="email" placeholder="Váš email" />
+			<i class="bi bi-envelope pe-2"></i>přihlásit odběr
+		</CustomButton>
 	</form>
 </div>
 
@@ -215,13 +215,17 @@
 	.next-event-container .button {
 		position: absolute;
 		top: 93%;
-		left: 50%;
-		height: 100%;
-		width: 100%;
+		height: fit-content;
+		width: fit-content;
+
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.content {
-		margin: 12% 10% 0% 10%;
+		margin: var(--content-side-margin) 10% 0% 10%;
 	}
 
 	.content .articles {
@@ -240,11 +244,16 @@
 		background-size: cover;
 	}
 
+	/* TODO center */
 	.content .banner .button {
 		position: absolute;
 		bottom: 10%;
-		width: 100%;
-		text-align: center;
+		width: fit-content;
+
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.time-banner {
@@ -266,21 +275,25 @@
 		padding-right: 0.6rem;
 	}
 
+	/* .time-banner div{
+		width: fit-content;
+		background-color: red;
+	} */
+
 	.partners-banner {
 		margin-top: var(--section-spacer);
 		background-color: var(--grey);
 		width: 100%;
 		height: fit-content;
-		padding: 2rem 4rem;
+		padding: 2rem var(--content-side-margin);
 	}
 
 	.partners-banner div {
 		height: fit-content;
-		padding: 3rem;
+		padding: 1rem;
 	}
 
 	.subscribe-banner {
-		position: absolute;
 		display: inline-flex;
 		width: 100%;
 		height: 15vh;
@@ -290,7 +303,7 @@
 		left: 0;
 		right: 0;
 
-		padding: 0 8rem;
+		padding: 0 var(--content-side-margin);
 	}
 
 	.subscribe-banner p {
@@ -300,14 +313,14 @@
 
 	.subscribe-banner div,
 	.subscribe-banner form {
-        position: relative;
+		position: relative;
 		height: fit-content;
 		width: 100%;
-        top: 50%;
-        transform: translateY(-50%);
+		top: 50%;
+		transform: translateY(-50%);
 	}
 
-    .subscribe-banner form input{
-        border: solid 2px var(--black);
-    }
+	.subscribe-banner form input {
+		border: solid 2px var(--black);
+	}
 </style>
