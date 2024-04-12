@@ -69,7 +69,7 @@
 				FUSION rules
 			</p>
 		</div>
-		<div class="col-4 navigation">
+		<!-- <div class="col-4 navigation">
 			<p class="clmn">rychlé<br />odkazy</p>
 			<ul class="clmn">
 				<li><a href="/">vstupenky</a></li>
@@ -84,7 +84,8 @@
 				<li><a href="/">kontakt</a></li>
 			</ul>
 		</div>
-		<div class="col-2 socials">
+		<div class="col-2 socials"> -->
+		<div class="col-6 socials">
 			<a href="/"><i class="bi bi-instagram"></i></a>
 			<a href="/"><i class="bi bi-facebook"></i></a>
 			<a href="/"><i class="bi bi-youtube"></i></a>
@@ -156,7 +157,7 @@
 		width: 20%;
 	}
 
-	footer .navigation .clmn {
+	/* footer .navigation .clmn {
 		float: inline-start;
 	}
 
@@ -171,18 +172,17 @@
 
 	footer .navigation li {
 		list-style-type: '> ';
-	}
+	} */
 
-	/* TODO hover */
-	footer .navigation a {
+	/* NOTE hover */
+	/* footer .navigation a {
 		position: relative;
 		top: 1px;
 		text-decoration: none;
 		text-transform: uppercase;
 		color: var(--white);
-	}
+	} */
 
-	/* TODO hover */
 	footer .socials a {
 		color: var(--white);
 		font-size: 2rem;
@@ -200,7 +200,6 @@
 		color: var(--primary);
 	}
 
-	/* TODO hover */
 	footer #settings a {
 		text-decoration: none;
 		color: var(--white);
@@ -212,5 +211,14 @@
 		border-top: 1px solid var(--grey);
 		margin: 0;
 		padding: 0.5rem 0;
+	}
+
+	a {
+		color: green;
+		transition: all 0.2s ease-in-out;
+	}
+
+	a:hover {
+		color: var(--primary) !important;
 	}
 </style>

@@ -167,7 +167,7 @@
 		width: 60%;
 	}
 
-	/* TODO */
+	/* BUG */
 	.next-event-container .buttons {
 		background-color: blue;
 		width: 40%;
@@ -211,7 +211,7 @@
 		overflow: hidden;
 	}
 
-	/* TODO */
+	/* BUG */
 	.next-event-container .button {
 		position: absolute;
 		top: 93%;
@@ -244,7 +244,6 @@
 		background-size: cover;
 	}
 
-	/* TODO center */
 	.content .banner .button {
 		position: absolute;
 		bottom: 10%;
