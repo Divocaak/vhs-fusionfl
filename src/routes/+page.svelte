@@ -47,13 +47,13 @@
 </script>
 
 <div class="bg-img-container">
-	<div class="next-event-container">
-		<div class="texts">
+	<div class="row">
+		<div class="col-md-7 col-12">
 			<p class="label">{closestEvent.label}</p>
 			<p class="ww">{closestEvent.date}<span>|</span>{closestEvent.place}</p>
 			<p class="desc">{closestEvent.desc}</p>
 		</div>
-		<div class="buttons">
+		<div class="col-md-5 col-12">
 			<CustomButton path="/">
 				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
 			</CustomButton><br />
@@ -90,7 +90,7 @@
 	<span class="countdown">{hours}</span>hod
 	<span class="countdown">{minutes}</span>min
 	<span class="countdown">{seconds}</span>sek
-	<!-- TODO spacer -->
+	<span class="px-2">&nbsp;</span>
 	<CustomButton path="/" clr="white" txtClr="info" display="inline-block">
 		<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
 		<span slot="tail">jen 490 kč</span>
@@ -98,12 +98,21 @@
 </div>
 
 <div class="partners-banner row">
-	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/logo.jpg" class="img-fluid" alt="partner logo" /></div>
+	<h2 class="col-12 lead">Generální partner</h2>
+	<div class="col-2"><img src="/imgs/partners_logos/czechcbd.png" class="img-fluid" alt="partner logo" /></div>
+	<h2 class="col-12 lead">Partneři</h2>
+	<div class="col-2"><img src="/imgs/partners_logos/atex.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/bjp.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/comfor.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/fortuna.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/jetsaamgym.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/jokva.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/mandarin.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/o2.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/olympia.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/plaza.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/pozisbau.png" class="img-fluid" alt="partner logo" /></div>
+	<div class="col-2"><img src="/imgs/partners_logos/ticketstream.png" class="img-fluid" alt="partner logo" /></div>
 </div>
 
 <div class="subscribe-banner">
@@ -135,7 +144,7 @@
 		border-bottom: solid 3px var(--primary-high);
 	}
 
-	.next-event-container {
+	.bg-img-container .row{
 		position: absolute;
 		bottom: -15%;
 
@@ -152,34 +161,21 @@
 		border-left: solid 10px var(--primary);
 
 		transform: skewX(-20deg) scaleY(cos(-20deg));
-		display: inline-flex;
+		/* display: inline-flex; */
 		padding: 2% 7%;
 	}
 
-	.next-event-container .buttons,
-	.next-event-container .texts,
-	.next-event-container .button {
+	.bg-img-container .row div{
 		transform: skewX(20deg) scaleY(cos(20deg));
-		height: 100%;
 	}
 
-	.next-event-container .texts {
-		width: 60%;
-	}
-
-	/* BUG */
-	.next-event-container .buttons {
-		background-color: blue;
-		width: 40%;
-	}
-
-	.next-event-container .texts .label,
-	.next-event-container .texts .ww {
+	.bg-img-container .row div .label,
+	.bg-img-container .row div .ww {
 		font-weight: bold;
 		margin: 0;
 	}
 
-	.next-event-container .texts .label {
+	.bg-img-container .row div .label {
 		width: fit-content;
 		text-transform: uppercase;
 		color: var(--black);
@@ -187,20 +183,20 @@
 		font-size: 2rem;
 	}
 
-	.next-event-container .texts .ww {
+	.bg-img-container .row div .ww {
 		color: var(--primary);
 		line-height: normal;
 		font-size: 1.3em;
 	}
 
-	.next-event-container .texts .ww span {
+	.bg-img-container .row div .ww span {
 		position: relative;
 		top: 0.2rem;
 		margin: 0 0.5rem;
 		font-size: 1.7rem;
 	}
 
-	.next-event-container .texts .desc {
+	.bg-img-container .row div .desc {
 		padding-top: 1rem;
 		padding-right: 1rem;
 		font-size: 0.8rem;
@@ -211,10 +207,9 @@
 		overflow: hidden;
 	}
 
-	/* BUG */
-	.next-event-container .button {
+	.bg-img-container .row .button {
 		position: absolute;
-		top: 93%;
+		bottom: -7%;
 		height: fit-content;
 		width: fit-content;
 
@@ -281,7 +276,7 @@
 
 	.partners-banner {
 		margin-top: var(--section-spacer);
-		background-color: var(--grey);
+		background-color: white;
 		width: 100%;
 		height: fit-content;
 		padding: 2rem var(--content-side-margin);
