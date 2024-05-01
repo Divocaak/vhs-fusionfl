@@ -27,9 +27,7 @@
 <nav class="navbar navbar-expand-lg sticky-top bg-light">
 	<a class="navbar-brand ps-5 d-flex align-items-center" href="/">
 		<img
-			src="/logo.jpg"
-			width="40"
-			height="40"
+			src="/imgs/logos/logo_h.png"
 			class="d-inline-block align-top me-3"
 			alt="logo"
 			loading="lazy"
@@ -51,7 +49,7 @@
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">turnaje</a>
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">aktuality</a>
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">merch</a>
-			<CustomButton path="/" fontSize="initial">
+			<CustomButton path="https://www.ticketstream.cz/akce/fusion-27-174927" fontSize="initial">
 				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
 			</CustomButton>
 		</div>
@@ -61,7 +59,9 @@
 <footer>
 	<div class="row">
 		<div class="col-6 about">
-			<img src="/logo.jpg" alt="logo" />
+			<object data="/logo.svg" type="image/svg+xml" style="filter:invert();" title="logo">
+				<img src="/imgs/logos/logo_v.png" alt="logo fallback" />
+			</object>
 			<p>
 				FUSION FIGHT LEAGUE<br />
 				galavečery bojových sportů.<br />
@@ -136,6 +136,12 @@
 		color: var(--black);
 	}
 
+	nav a img {
+		position: relative;
+		height: 40px;
+		width: auto;
+	}
+
 	footer {
 		display: block;
 		width: 100%;
@@ -153,7 +159,8 @@
 		line-height: 1rem;
 	}
 
-	footer .about img {
+	footer .about object,
+	img {
 		width: 20%;
 	}
 

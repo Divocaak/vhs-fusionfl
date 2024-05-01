@@ -3,11 +3,6 @@
 	import Article from '$lib/Article.svelte';
 	import { tweened } from 'svelte/motion';
 
-	/* TODO rework date format */
-	const expected = new Date('Jan 5, 2030 15:37:25').getTime();
-	const now = new Date().getTime();
-	const distance = tweened(expected - now);
-
 	setInterval(() => {
 		if ($distance > 0) {
 			$distance -= 1000;
@@ -19,45 +14,59 @@
 	$: seconds = Math.floor(($distance % (1000 * 60)) / 1000);
 
 	const closestEvent = {
-		label: 'fusion 26 x ring 10',
-		/* TODO rework date format */
-		date: '2. 2. 2024',
+		label: 'FUSION 27',
+		date: 'May 3, 2024 19:00:00',
 		place: 'Brno, Zoner BOBYHALL',
-		desc: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Pellentesque pretium lectus id turpis. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+		desc: 'Těšit se můžete na osvědčená jména domácí MMA a postojové scény a tradičně vám přineseme i nové talenty. Svoji MMA premiéru mezi profesionály zde bude mít juniorský mistr Evropy a juniorský mistr světa, Tagir Machmudov. Dále se v rámci FUSION talents představí Lukáš Zavičák, Václav Štěpán, Šimon Bruknar, nebo Václav Žemla. Těšit se můžete i na osvědčená jména postojové scény jako Jan Juříček, Erik Breit či hvězdu organizace Oktagon MMA Radka Roušala. Buďte u začátku nových hvězd MMA a pojďte spolu s námi sledovat jejich cestu.',
+		ppvLink: 'https://sportlive24.tv/product/nR_2cXvR79WpsDN6ClS7ow',
+		ppvPrice: '199',
+		tickets: 'https://www.ticketstream.cz/akce/fusion-27-174927'
 	};
+
+	const expected = new Date(closestEvent.date).getTime();
+	const now = new Date().getTime();
+	const distance = tweened(expected - now);
+
+	const dateFormatted = new Date(closestEvent.date).toLocaleDateString('cs-CZ', {
+		month: 'numeric',
+		day: 'numeric',
+		year: 'numeric'
+	});
 
 	const articles = [
 		{
-			id: '1',
-			label:
-				'Spolykala šestačtyřicet ibuprofenů. Počet smrtelných předávkování u mladých strmě roste',
-			tags: ['FUSION 26', 'Soutěž']
+			id: '3',
+			label: 'FUSION 25 oslavuje comeback v Brně: Knockouty a vzpomínky hvězd',
+			tags: ['FUSION 25', 'Reportáž']
 		},
 		{
 			id: '2',
-			label: 'Okupovaná území Rusku, zbytek do NATO. O „výbušném plánu“ Aliance píší v Itálii',
-			tags: ['O tag víc', 'FUSION 26', 'Soutěž']
+			label: 'FUSION 27: Výkladní skříň talentů MMA v Brně  ',
+			tags: ['FUSION 27', 'Soutěž']
 		},
 		{
-			id: '3',
-			label: 'Hokejový fanoušek nakopl policistu, další hajloval, oba putovali za mříže',
-			tags: ['A jeden uberem']
+			id: '1',
+			label: 'Vsaďte si na své favority v MMA: FUSION a Fortuna ti přeje štěstí',
+			tags: ['FUSION 27', 'Kurzovní lístek']
 		}
 	];
+
+	/* TODO link */
+	const aftermovieLink = '/';
 </script>
 
 <div class="bg-img-container">
 	<div class="row">
 		<div class="col-md-7 col-12">
 			<p class="label">{closestEvent.label}</p>
-			<p class="ww">{closestEvent.date}<span>|</span>{closestEvent.place}</p>
+			<p class="ww">{dateFormatted}<span>|</span>{closestEvent.place}</p>
 			<p class="desc">{closestEvent.desc}</p>
 		</div>
 		<div class="col-md-5 col-12">
-			<CustomButton path="/">
+			<CustomButton path={closestEvent.tickets}>
 				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
 			</CustomButton><br />
-			<CustomButton path="/" clr="info">
+			<CustomButton path={closestEvent.ppvLink} clr="info">
 				<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
 			</CustomButton>
 		</div>
@@ -91,28 +100,60 @@
 	<span class="countdown">{minutes}</span>min
 	<span class="countdown">{seconds}</span>sek
 	<span class="px-2">&nbsp;</span>
-	<CustomButton path="/" clr="white" txtClr="info" display="inline-block">
+	<CustomButton path={closestEvent.ppvLink} clr="white" txtClr="info" display="inline-block">
 		<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
-		<span slot="tail">jen 490 kč</span>
+		<span slot="tail">jen {closestEvent.ppvPrice} kč</span>
 	</CustomButton>
 </div>
 
-<div class="partners-banner row">
-	<h2 class="col-12 lead">Generální partner</h2>
-	<div class="col-2"><img src="/imgs/partners_logos/czechcbd.png" class="img-fluid" alt="partner logo" /></div>
-	<h2 class="col-12 lead">Partneři</h2>
-	<div class="col-2"><img src="/imgs/partners_logos/atex.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/bjp.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/comfor.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/fortuna.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/jetsaamgym.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/jokva.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/mandarin.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/o2.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/olympia.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/plaza.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/pozisbau.png" class="img-fluid" alt="partner logo" /></div>
-	<div class="col-2"><img src="/imgs/partners_logos/ticketstream.png" class="img-fluid" alt="partner logo" /></div>
+<div class="partners-banner">
+	<h2 class="lead">Generální partner</h2>
+	<div class="row">
+		<div class="col-12 col-md-4"></div>
+		<div class="col-12 col-md-4">
+			<img src="/imgs/partners_logos/czechcbd.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-12 col-md-4"></div>
+	</div>
+	<h2 class="lead">Partneři</h2>
+	<div class="row">
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/atex.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/bjp.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/comfor.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/fortuna.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/jetsaamgym.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/jokva.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/mandarin.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/o2.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/olympia.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/plaza.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/pozisbau.png" class="img-fluid" alt="partner logo" />
+		</div>
+		<div class="col-6 col-sm-4 col-md-2">
+			<img src="/imgs/partners_logos/ticketstream.png" class="img-fluid" alt="partner logo" />
+		</div>
+	</div>
 </div>
 
 <div class="subscribe-banner">
@@ -144,7 +185,7 @@
 		border-bottom: solid 3px var(--primary-high);
 	}
 
-	.bg-img-container .row{
+	.bg-img-container .row {
 		position: absolute;
 		bottom: -15%;
 
@@ -165,7 +206,7 @@
 		padding: 2% 7%;
 	}
 
-	.bg-img-container .row div{
+	.bg-img-container .row div {
 		transform: skewX(20deg) scaleY(cos(20deg));
 	}
 
@@ -233,7 +274,7 @@
 		position: relative;
 		width: 100%;
 		height: 30vh;
-		background-image: url('/imgs/4.jpg');
+		background-image: url('/imgs/aftermovie/v1.png');
 		background-position: 0;
 		background-repeat: no-repeat;
 		background-size: cover;
