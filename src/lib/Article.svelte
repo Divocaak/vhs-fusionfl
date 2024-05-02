@@ -6,9 +6,9 @@
 	export let tags = [];
 </script>
 
-<div class="article-wrapper">
+<div class="col-12 col-sm-4">
 	<div class="bg-img" style="background-image: url('/imgs/article_imgs/{id}.jpg');"></div>
-	<div class="content">
+	<div class="content mb-5 mb-md-0">
 		<p>{label}</p>
 		{#each tags as tag}
 			<ArticleTag label={tag} />
@@ -20,14 +20,6 @@
 </div>
 
 <style>
-	.article-wrapper {
-		position: relative;
-		width: calc(100% / 3);
-		height: 50vh;
-		float: inline-start;
-		padding: 0 1%;
-	}
-
 	.bg-img {
 		position: relative;
 		aspect-ratio: 16 / 9;
@@ -49,6 +41,7 @@
 		margin-top: 1.5rem;
 	}
 
+	/* BUG hover */
 	.hvr-icon-forward {
 		display: inline-block;
 		vertical-align: middle;

@@ -55,41 +55,47 @@
 	const aftermovieLink = '/';
 </script>
 
-<div class="bg-img-container">
-	<div class="row">
-		<div class="col-md-7 col-12">
-			<p class="label">{closestEvent.label}</p>
-			<p class="ww">{dateFormatted}<span>|</span>{closestEvent.place}</p>
-			<p class="desc">{closestEvent.desc}</p>
-		</div>
-		<div class="col-md-5 col-12">
-			<CustomButton path={closestEvent.tickets}>
-				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
-			</CustomButton><br />
-			<CustomButton path={closestEvent.ppvLink} clr="info">
-				<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
-			</CustomButton>
-		</div>
-		<div class="button">
-			<CustomButton path="/" clr="black">
-				<i class="bi bi-person-badge-fill pe-2"></i>fightcard
-			</CustomButton>
+<div class="landing-panel">
+	<div class="bg-img-container">
+		<div class="row">
+			<div class="col-md-7 col-12">
+				<p class="label">{closestEvent.label}</p>
+				<p class="ww">{dateFormatted}<span>|</span>{closestEvent.place}</p>
+				<p class="desc">{closestEvent.desc}</p>
+			</div>
+			<div class="col-md-5 col-12">
+				<CustomButton path={closestEvent.tickets}>
+					<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
+				</CustomButton><br />
+				<CustomButton path={closestEvent.ppvLink} clr="info">
+					<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
+				</CustomButton>
+			</div>
+			<div class="button">
+				<CustomButton path="/" clr="black">
+					<i class="bi bi-person-badge-fill pe-2"></i>fightcard
+				</CustomButton>
+			</div>
 		</div>
 	</div>
 </div>
 
-<div class="content">
-	<h1 class="lead">novinky</h1>
-	<div class="articles">
-		{#each articles as article}
-			<Article {...article} />
-		{/each}
+<div class="content" id="news">
+	<div class="m-0 p-0 m-sm-5 p-sm-5">
+		<h1 class="lead">novinky</h1>
+		<div class="row m-0">
+			{#each articles as article}
+				<Article {...article} />
+			{/each}
+		</div>
 	</div>
-	<div class="banner">
-		<div class="button">
-			<CustomButton path="/" clr="black">
-				<i class="bi bi-play-circle-fill pe-2"></i>pusť si aftermovie
-			</CustomButton>
+	<div class="mx-0 px-0 mx-md-5 px-md-5">
+		<div class="banner">
+			<div class="button">
+				<CustomButton path={aftermovieLink} clr="black">
+					<i class="bi bi-play-circle-fill pe-2"></i>pusť si aftermovie
+				</CustomButton>
+			</div>
 		</div>
 	</div>
 </div>
@@ -156,22 +162,33 @@
 	</div>
 </div>
 
-<div class="subscribe-banner">
-	<div>
+<div class="subscribe-banner row px-0 px-md-5">
+	<div class="col-12 col-sm-6">
 		<p class="lead">nenechte si ujít novinky</p>
 		<p>Získáte náskok při předprodeji vstupenek</p>
 	</div>
-	<form>
-		<CustomButton path="/" display="inline-block" fontSize="1.2rem">
-			<input slot="head" type="email" placeholder="Váš email" />
-			<i class="bi bi-envelope pe-2"></i>přihlásit odběr
-		</CustomButton>
-	</form>
+	<div class="col-12 col-sm-6">
+		<form>
+			<CustomButton path="/" display="inline-block" fontSize="1.2rem">
+				<input slot="head" type="email" placeholder="Váš email" />
+				<i class="bi bi-envelope pe-2"></i>přihlásit odběr
+			</CustomButton>
+		</form>
+	</div>
 </div>
 
 <style>
 	:root {
 		--section-spacer: 2rem;
+	}
+
+	.landing-panel {
+		margin: 0;
+		padding: 0;
+		position: relative;
+		height: 100vh;
+		width: 100%;
+		overflow-x: hidden;
 	}
 
 	.bg-img-container {
@@ -194,15 +211,14 @@
 		left: 0;
 		right: 0;
 
-		width: 70%;
-		height: 40%;
+		width: 85vw;
+		height: fit-content;
 		background-color: var(--white);
 
 		border: solid 2px var(--primary);
 		border-left: solid 10px var(--primary);
 
 		transform: skewX(-20deg) scaleY(cos(-20deg));
-		/* display: inline-flex; */
 		padding: 2% 7%;
 	}
 
@@ -250,7 +266,7 @@
 
 	.bg-img-container .row .button {
 		position: absolute;
-		bottom: -7%;
+		bottom: -11%;
 		height: fit-content;
 		width: fit-content;
 
@@ -258,15 +274,6 @@
 		right: 0;
 		margin-left: auto;
 		margin-right: auto;
-	}
-
-	.content {
-		margin: var(--content-side-margin) 10% 0% 10%;
-	}
-
-	.content .articles {
-		position: relative;
-		height: 50vh;
 	}
 
 	.content .banner {
@@ -329,30 +336,14 @@
 	}
 
 	.subscribe-banner {
-		display: inline-flex;
-		width: 100%;
-		height: 15vh;
-
 		margin-left: auto;
 		margin-right: auto;
 		left: 0;
 		right: 0;
-
-		padding: 0 var(--content-side-margin);
 	}
 
 	.subscribe-banner p {
 		color: var(--primary);
-		margin: 0;
-	}
-
-	.subscribe-banner div,
-	.subscribe-banner form {
-		position: relative;
-		height: fit-content;
-		width: 100%;
-		top: 50%;
-		transform: translateY(-50%);
 	}
 
 	.subscribe-banner form input {

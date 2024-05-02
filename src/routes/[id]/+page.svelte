@@ -1,23 +1,27 @@
 <script>
 	import SvelteMarkdown from 'svelte-markdown';
+	import Heading from '$lib/md/Heading.svelte';
 
-	const source = 
-    `# This is a header
-  
-  This is a paragraph.
-  
-  * This is a list
-  * With two items
-    1. And a sublist
-    2. That is ordered
-      * With another
-      * Sublist inside
-  
-  | And this is | A table |
-  |-------------|---------|
-  | With two    | columns |`;
+	export let data;
 </script>
 
-<img src="imgs/article_imgss/{id}.jpg" alt="article img">
+<div class="img" style="background-image: url('/imgs/article_imgs/{data.id}.jpg');"></div>
+<article>
+	<SvelteMarkdown source={data.md} renderers={{heading: Heading}}/>
+</article>
 
-<SvelteMarkdown {source} />
+<style>
+
+	.img {
+		position: relative;
+		width: 100%;
+		height: 70vh;
+		background-position: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	article {
+		margin: calc(var(--content-side-margin) / 3) var(--content-side-margin);
+	}
+</style>

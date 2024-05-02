@@ -33,22 +33,11 @@
 			loading="lazy"
 		/>
 	</a>
-	<button
-		class="navbar-toggler"
-		type="button"
-		data-bs-toggle="collapse"
-		data-bs-target="#navbarNavAltMarkup"
-		aria-controls="navbarNavAltMarkup"
-		aria-expanded="false"
-		aria-label="Toggle navigation"
-	>
-		<span class="navbar-toggler-icon" />
-	</button>
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div class="pe-5 navbar-nav ms-auto">
-			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">turnaje</a>
-			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">aktuality</a>
-			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">merch</a>
+			<!-- <a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">turnaje</a> -->
+			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/#news">aktuality</a>
+			<!-- <a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">merch</a> -->
 			<CustomButton path="https://www.ticketstream.cz/akce/fusion-27-174927" fontSize="initial">
 				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
 			</CustomButton>
