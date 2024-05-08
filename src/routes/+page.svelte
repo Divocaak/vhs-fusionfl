@@ -3,29 +3,15 @@
 	import Article from '$lib/Article.svelte';
 	import { tweened } from 'svelte/motion';
 
-	setInterval(() => {
-		if ($distance > 0) {
-			$distance -= 1000;
-		}
-	}, 1000);
-	$: days = Math.floor($distance / (1000 * 60 * 60 * 24));
-	$: hours = Math.floor(($distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	$: minutes = Math.floor(($distance % (1000 * 60 * 60)) / (1000 * 60));
-	$: seconds = Math.floor(($distance % (1000 * 60)) / 1000);
-
 	const closestEvent = {
 		label: 'FUSION 27',
-		date: 'May 30, 2024 19:00:00',
+		date: 'May 3, 2024 19:00:00',
 		place: 'Brno, Zoner BOBYHALL',
 		desc: 'Těšit se můžete na osvědčená jména domácí MMA a postojové scény a tradičně vám přineseme i nové talenty. Svoji MMA premiéru mezi profesionály zde bude mít juniorský mistr Evropy a juniorský mistr světa, Tagir Machmudov. Dále se v rámci FUSION talents představí Lukáš Zavičák, Václav Štěpán, Šimon Bruknar, nebo Václav Žemla. Těšit se můžete i na osvědčená jména postojové scény jako Jan Juříček, Erik Breit či hvězdu organizace Oktagon MMA Radka Roušala. Buďte u začátku nových hvězd MMA a pojďte spolu s námi sledovat jejich cestu.',
 		ppvLink: 'https://sportlive24.tv/product/nR_2cXvR79WpsDN6ClS7ow',
 		ppvPrice: '199',
 		tickets: 'https://www.ticketstream.cz/akce/fusion-27-174927'
 	};
-
-	const expected = new Date(closestEvent.date).getTime();
-	const now = new Date().getTime();
-	const distance = tweened(expected - now);
 
 	const dateFormatted = new Date(closestEvent.date).toLocaleDateString('cs-CZ', {
 		month: 'numeric',
@@ -50,7 +36,20 @@
 			tags: ['FUSION 27', 'Kurzovní lístek']
 		}
 	];
-
+	
+	const dateForBanner = "Oct 10, 2024 19:00:00"
+	const expected = new Date(dateForBanner).getTime();
+	const distance = tweened(expected - new Date().getTime());
+	setInterval(() => {
+		if ($distance > 0) {
+			$distance -= 1000;
+		}
+	}, 1000);
+	$: days = Math.floor($distance / (1000 * 60 * 60 * 24));
+	$: hours = Math.floor(($distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	$: minutes = Math.floor(($distance % (1000 * 60 * 60)) / (1000 * 60));
+	$: seconds = Math.floor(($distance % (1000 * 60)) / 1000);
+	
 	const aftermovieLink = 'https://www.youtube.com/watch?v=8VflzskoJds';
 </script>
 
@@ -108,7 +107,7 @@
 	<span class="countdown">{minutes}</span>min
 	<span class="countdown">{seconds}</span>sek
 	<span class="px-2">&nbsp;</span>
-	<CustomButton path={closestEvent.ppvLink} clr="white" txtClr="info" display="inline-block">
+	<CustomButton path={closestEvent.ppvLink} clr="white" txtClr="primary" display="inline-block">
 		<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
 		<span slot="tail">jen {closestEvent.ppvPrice} kč</span>
 	</CustomButton>
@@ -362,7 +361,7 @@
 		margin-top: var(--section-spacer);
 		position: relative;
 		width: 100%;
-		background-color: var(--info);
+		background-color: var(--black);
 		color: var(--white);
 		text-align: center;
 		font-weight: lighter;
