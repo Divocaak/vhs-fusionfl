@@ -15,7 +15,7 @@
 
 	const closestEvent = {
 		label: 'FUSION 27',
-		date: 'May 3, 2024 19:00:00',
+		date: 'May 30, 2024 19:00:00',
 		place: 'Brno, Zoner BOBYHALL',
 		desc: 'Těšit se můžete na osvědčená jména domácí MMA a postojové scény a tradičně vám přineseme i nové talenty. Svoji MMA premiéru mezi profesionály zde bude mít juniorský mistr Evropy a juniorský mistr světa, Tagir Machmudov. Dále se v rámci FUSION talents představí Lukáš Zavičák, Václav Štěpán, Šimon Bruknar, nebo Václav Žemla. Těšit se můžete i na osvědčená jména postojové scény jako Jan Juříček, Erik Breit či hvězdu organizace Oktagon MMA Radka Roušala. Buďte u začátku nových hvězd MMA a pojďte spolu s námi sledovat jejich cestu.',
 		ppvLink: 'https://sportlive24.tv/product/nR_2cXvR79WpsDN6ClS7ow',
@@ -51,8 +51,7 @@
 		}
 	];
 
-	/* TODO link */
-	const aftermovieLink = '/';
+	const aftermovieLink = 'https://www.youtube.com/watch?v=8VflzskoJds';
 </script>
 
 <div class="landing-panel">
@@ -100,6 +99,7 @@
 	</div>
 </div>
 
+{#if seconds >= 0}
 <div class="time-banner">
 	<span class="countdown">{days}</span>dní
 	<span class="countdown">{hours}</span>hod
@@ -111,6 +111,7 @@
 		<span slot="tail">jen {closestEvent.ppvPrice} kč</span>
 	</CustomButton>
 </div>
+{/if}
 
 <div class="partners-banner">
 	<h2 class="lead">Generální partner</h2>
@@ -195,8 +196,8 @@
 		position: relative;
 		width: 100vw;
 		height: 80vh;
-		background-image: url('/imgs/0.jpg');
-		background-position: 0;
+		background-image: url('/imgs/intro.jpg');
+		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		border-bottom: solid 3px var(--primary-high);
@@ -281,10 +282,10 @@
 		position: relative;
 		width: 100%;
 		height: 30vh;
-		background-image: url('/imgs/aftermovie/v1.png');
-		background-position: 0;
+		background-image: url('/imgs/aftermovie.jpg');
+		background-position: center;
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: contain;
 	}
 
 	.content .banner .button {

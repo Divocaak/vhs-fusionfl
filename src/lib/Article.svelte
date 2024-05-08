@@ -23,7 +23,7 @@
 	.bg-img {
 		position: relative;
 		aspect-ratio: 16 / 9;
-		background-position: 0;
+		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
