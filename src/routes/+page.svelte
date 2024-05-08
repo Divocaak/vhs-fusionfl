@@ -56,26 +56,28 @@
 
 <div class="landing-panel">
 	<div class="bg-img-container">
-		<div class="row">
-			<div class="col-md-7 col-12">
-				<p class="label">{closestEvent.label}</p>
-				<p class="ww">{dateFormatted}<span>|</span>{closestEvent.place}</p>
-				<p class="desc">{closestEvent.desc}</p>
+			<div class="arrows-holder">
+				<div class="row">
+					<div class="col-md-6 col-12 text-center">
+						<p class="label">{closestEvent.label}</p>
+						<p class="ww">{dateFormatted}<span>|</span>{closestEvent.place}</p>
+						<p class="desc">{closestEvent.desc}</p>
+					</div>
+					<div class="col-md-6 col-12">
+						<CustomButton path={closestEvent.tickets} display="block">
+							<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
+						</CustomButton>
+						<CustomButton path={closestEvent.ppvLink} clr="info" display="block"  additionalClasses="my-2">
+							<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
+						</CustomButton>
+						<CustomButton path="/" clr="black" display="block">
+							<i class="bi bi-person-badge-fill pe-2"></i>fightcard
+						</CustomButton>
+					</div>
+					<i class="car-btn-icon bi bi-arrow-left"></i>
+					<i class="car-btn-icon bi bi-arrow-right"></i>
+				</div>
 			</div>
-			<div class="col-md-5 col-12">
-				<CustomButton path={closestEvent.tickets}>
-					<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
-				</CustomButton><br />
-				<CustomButton path={closestEvent.ppvLink} clr="info">
-					<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
-				</CustomButton>
-			</div>
-			<div class="button">
-				<CustomButton path="/" clr="black">
-					<i class="bi bi-person-badge-fill pe-2"></i>fightcard
-				</CustomButton>
-			</div>
-		</div>
 	</div>
 </div>
 
@@ -192,6 +194,7 @@
 		overflow-x: hidden;
 	}
 
+	
 	.bg-img-container {
 		position: relative;
 		width: 100vw;
@@ -203,7 +206,7 @@
 		border-bottom: solid 3px var(--primary-high);
 	}
 
-	.bg-img-container .row {
+	.arrows-holder{
 		position: absolute;
 		bottom: -15%;
 
@@ -212,20 +215,89 @@
 		left: 0;
 		right: 0;
 
-		width: 85vw;
+		width: 60vw;
 		height: fit-content;
-		background-color: var(--white);
+		background-color:var(--primary);
 
-		border: solid 2px var(--primary);
-		border-left: solid 10px var(--primary);
-
+		padding: 2px 60px;
 		transform: skewX(-20deg) scaleY(cos(-20deg));
-		padding: 2% 7%;
 	}
 
-	.bg-img-container .row div {
+	.bg-img-container .row {
+		position:relative;
+		width: 100%;
+		height: 100%;
+		background-color: var(--white);
+		margin:0;
+		
+		padding: 2% 3%;
+
+		box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.75);
+		-webkit-box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.75);
+		-moz-box-shadow: 0px 0px 50px 10px rgba(0,0,0,0.75);
+	}
+
+	.bg-img-container .row div, .car-btn-icon {
 		transform: skewX(20deg) scaleY(cos(20deg));
 	}
+
+	.bg-img-container .row .car-btn-icon{
+		position: absolute;
+		top:45%;
+		color: var(--white);
+		font-size: 1.5rem;
+		font-weight:bolder;
+		cursor: pointer;
+		width:min-content;
+		height:min-content;
+		padding:0;
+		margin:0;
+	}
+
+	.bg-img-container .row .car-btn-icon:first-of-type {
+		left:-5%;
+	}
+
+	.bg-img-container .row .car-btn-icon:last-of-type {
+		right:-5%;
+	}
+
+	 /* Extra small devices (phones) */
+	@media only screen and (max-width: 768px) {
+		.arrows-holder {
+            background-color: lightblue;
+			width: 85vw;
+			transform: skewX(-10deg) scaleY(cos(-10deg));
+        }
+
+		.bg-img-container .row div, .car-btn-icon  {
+			transform: skewX(10deg) scaleY(cos(10deg));
+		}
+
+		.bg-img-container .row .car-btn-icon:first-of-type {
+		left:-10%;
+	}
+
+	.bg-img-container .row .car-btn-icon:last-of-type {
+		right:-10%;
+	}
+    }
+
+    /* Medium devices (desktops, laptops) */
+    @media only screen and (min-width: 768px) and (max-width: 992px) {
+        .arrows-holder {
+            background-color: lightcoral;
+			width: 70vw;
+        }
+
+		.bg-img-container .row .car-btn-icon:first-of-type {
+		left:-10%;
+	}
+
+	.bg-img-container .row .car-btn-icon:last-of-type {
+		right:-10%;
+	}
+    }
 
 	.bg-img-container .row div .label,
 	.bg-img-container .row div .ww {
@@ -234,7 +306,6 @@
 	}
 
 	.bg-img-container .row div .label {
-		width: fit-content;
 		text-transform: uppercase;
 		color: var(--black);
 		border-bottom: 1px solid var(--black);
@@ -260,21 +331,9 @@
 		font-size: 0.8rem;
 		display: -webkit-box;
 		max-width: 100%;
-		-webkit-line-clamp: 5;
+		-webkit-line-clamp: 3;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
-	}
-
-	.bg-img-container .row .button {
-		position: absolute;
-		bottom: -11%;
-		height: fit-content;
-		width: fit-content;
-
-		left: 0;
-		right: 0;
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	.content .banner {

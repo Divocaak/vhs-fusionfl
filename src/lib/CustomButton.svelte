@@ -4,8 +4,9 @@
 	export let tailClr = 'primary';
 	export let txtClr = 'white';
 	export let tailTxtClr = 'white';
-	export let display = 'block';
+	export let display = 'inline-block';
 	export let fontSize = '1.4rem';
+	export let additionalClasses = "";
 </script>
 
 {#if $$slots.head}
@@ -16,6 +17,7 @@
 <a
 	href={path}
 	style="--clr: var(--{clr}); --txtClr: var(--{txtClr}); --display: {display}; --fs: {fontSize}"
+	class={additionalClasses}
 >
 	<slot />
 </a>
@@ -28,7 +30,7 @@
 <style>
 	:root {
 		--ml: 5px;
-		--display: block;
+		--display: inline-block;
 		--fs: 1.4rem;
 	}
 
@@ -40,7 +42,8 @@
 		position: relative;
 		height: fit-content;
 
-		display: inline-block;
+		/* display: inline-block; */
+		display: var(--display);
 		vertical-align: middle;
 		-webkit-transform: perspective(1px) translateZ(0);
 		transform: perspective(1px) translateZ(0);

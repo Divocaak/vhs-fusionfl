@@ -36,8 +36,8 @@
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<div class="pe-5 navbar-nav ms-auto">
 			<!-- <a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">turnaje</a> -->
+			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="https://shop.fusionfl.cz/">shop</a>
 			<a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/#news">aktuality</a>
-			<!-- <a class="nav-item nav-link text-uppercase fw-bold pe-5" href="/">merch</a> -->
 			<CustomButton path="https://www.ticketstream.cz/akce/fusion-27-174927" fontSize="initial">
 				<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
 			</CustomButton>
