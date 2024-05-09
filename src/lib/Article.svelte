@@ -7,7 +7,7 @@
 	export let tags = [];
 </script>
 
-<div class="col-12 col-sm-4 hvr-grow-shadow" on:click={() => goto(`/${id}`)}>
+<div class="col-12 col-sm-4 hvr-grow-shadow" on:click={() => goto(`/article/${id}`)}>
 	<div class="bg-img" style="background-image: url('/imgs/article_imgs/{id}.jpg');"></div>
 	<div class="content mb-5 mb-md-0 p-3">
 		<p>{label}</p>

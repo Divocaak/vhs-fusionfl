@@ -4,14 +4,13 @@
 
 	export let data;
 </script>
-
+<!-- TODO move to layout with event -->
 <div class="img" style="background-image: url('/imgs/article_imgs/{data.id}.jpg');"></div>
 <article>
 	<SvelteMarkdown source={data.md} renderers={{heading: Heading}}/>
 </article>
 
 <style>
-
 	.img {
 		position: relative;
 		width: 100%;

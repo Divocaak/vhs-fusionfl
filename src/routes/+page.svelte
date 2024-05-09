@@ -3,14 +3,16 @@
 	import Article from '$lib/Article.svelte';
 	import { tweened } from 'svelte/motion';
 
+	/* TODO from db */
 	const closestEvent = {
+		id: 2,
 		label: 'FUSION 27',
 		date: 'May 3, 2024 19:00:00',
 		place: 'Brno, Zoner BOBYHALL',
 		desc: 'Těšit se můžete na osvědčená jména domácí MMA a postojové scény a tradičně vám přineseme i nové talenty. Svoji MMA premiéru mezi profesionály zde bude mít juniorský mistr Evropy a juniorský mistr světa, Tagir Machmudov. Dále se v rámci FUSION talents představí Lukáš Zavičák, Václav Štěpán, Šimon Bruknar, nebo Václav Žemla. Těšit se můžete i na osvědčená jména postojové scény jako Jan Juříček, Erik Breit či hvězdu organizace Oktagon MMA Radka Roušala. Buďte u začátku nových hvězd MMA a pojďte spolu s námi sledovat jejich cestu.',
 		ppvLink: 'https://sportlive24.tv/product/nR_2cXvR79WpsDN6ClS7ow',
 		ppvPrice: '199',
-		tickets: 'https://www.ticketstream.cz/akce/fusion-27-174927'
+		tickets: 'https://www.ticketstream.cz/akce/fusion-28-176062'
 	};
 
 	const dateFormatted = new Date(closestEvent.date).toLocaleDateString('cs-CZ', {
@@ -19,6 +21,7 @@
 		year: 'numeric'
 	});
 
+	/* TODO from db */
 	const articles = [
 		{
 			id: '3',
@@ -37,8 +40,7 @@
 		}
 	];
 	
-	const dateForBanner = "Oct 10, 2024 19:00:00"
-	const expected = new Date(dateForBanner).getTime();
+	const expected = new Date(closestEvent.date).getTime();
 	const distance = tweened(expected - new Date().getTime());
 	setInterval(() => {
 		if ($distance > 0) {
@@ -53,8 +55,9 @@
 	const aftermovieLink = 'https://www.youtube.com/watch?v=8VflzskoJds';
 </script>
 
+<!-- URGENT move to a component without the arrows to reuse at event detail -->
 <div class="landing-panel">
-	<div class="bg-img-container">
+	<div class="bg-img-container" style="background-image: url('/imgs/events/{closestEvent.id}.jpg');">
 			<div class="arrows-holder">
 				<div class="row">
 					<div class="col-md-6 col-12 text-center">
@@ -69,7 +72,7 @@
 						<CustomButton path={closestEvent.ppvLink} clr="info" display="block"  additionalClasses="my-2">
 							<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
 						</CustomButton>
-						<CustomButton path="/" clr="black" display="block">
+						<CustomButton path="/event/{closestEvent.id}" clr="black" display="block">
 							<i class="bi bi-person-badge-fill pe-2"></i>fightcard
 						</CustomButton>
 					</div>
@@ -198,7 +201,6 @@
 		position: relative;
 		width: 100vw;
 		height: 80vh;
-		background-image: url('/imgs/intro.jpg');
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: cover;
