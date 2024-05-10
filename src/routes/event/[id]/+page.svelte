@@ -1,19 +1,24 @@
 <script>
+	import EventIntro from '$lib/EventIntro.svelte';
+
 	export let data;
+
 	const event = data.event;
 </script>
 
-<div class="img" style="background-image: url('/imgs/events/{data.id}.jpg');"></div>
+<EventIntro event={event} isDetail={true}></EventIntro>
 <main>
-	{event.label}
-	{event.date}
-	{event.place}
 	{event.desc}
-	{event.ppvLink}
-	{event.ppvPrice}
-	{event.tickets}
-	<!-- TODO fightcard (img) -->
+	<div id="fightcard">
+		<!-- TODO hover fx -->
+		<img class="img-fluid my-1 my-sm-2" alt="fightcard breit" src="/imgs/fightcards/breit.png">
+		<img class="img-fluid my-1 my-sm-2" alt="fightcard bruknar" src="/imgs/fightcards/bruknar.png">
+		<img class="img-fluid my-1 my-sm-2" alt="fightcard juricek" src="/imgs/fightcards/juricek.png">
+		<img class="img-fluid my-1 my-sm-2" alt="fightcard machmudov" src="/imgs/fightcards/machmudov.png">
+		<img class="img-fluid my-1 my-sm-2" alt="fightcard tba" src="/imgs/fightcards/tba-tba.png">
+	</div>
 </main>
+<!-- TODO fightcard (img) -->
 
 <style>
 	.img {

@@ -1,5 +1,6 @@
 {
     "2": {
+        "id": 2,
         "label": "FUSION 28",
         "date": "Oct 10, 2024 19:00:00",
         "place": "Brno, Zoner BOBYHALL",
@@ -10,6 +11,7 @@
         "aftermovie": null
     },
     "1": {
+        "id": 1,
         "label": "FUSION 27",
         "date": "May 3, 2024 19:00:00",
         "place": "Brno, Zoner BOBYHALL",
