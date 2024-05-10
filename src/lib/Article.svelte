@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	import ArticleTag from '$lib/ArticleTag.svelte';
 
 	export let id;
@@ -6,9 +7,9 @@
 	export let tags = [];
 </script>
 
-<div class="col-12 col-sm-4">
+<div class="col-12 col-sm-4 hvr-grow-shadow" on:click={() => goto(`/article/${id}`)}>
 	<div class="bg-img" style="background-image: url('/imgs/article_imgs/{id}.jpg');"></div>
-	<div class="content mb-5 mb-md-0">
+	<div class="content mb-5 mb-md-0 p-3">
 		<p>{label}</p>
 		{#each tags as tag}
 			<ArticleTag label={tag} />
@@ -21,11 +22,10 @@
 
 <style>
 	.bg-img {
-		position: relative;
 		aspect-ratio: 16 / 9;
 		background-position: center;
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: contain;
 	}
 
 	.content p {
@@ -41,30 +41,23 @@
 		margin-top: 1.5rem;
 	}
 
-	/* BUG hover */
-	.hvr-icon-forward {
-		display: inline-block;
-		vertical-align: middle;
+	.hvr-grow-shadow {
+		cursor:pointer;
 		-webkit-transform: perspective(1px) translateZ(0);
 		transform: perspective(1px) translateZ(0);
 		box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-		-webkit-transition-duration: 0.1s;
-		transition-duration: 0.1s;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-property: box-shadow, transform;
+		transition-property: box-shadow, transform;
+		background-color:white;
+		padding-bottom: 20px;
+}
+	.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+		z-index:10;
+		box-shadow: 0 0 100px 0px rgba(0, 0, 0, 0.5);
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
 	}
-	.hvr-icon-forward .hvr-icon {
-		-webkit-transform: translateZ(0);
-		transform: translateZ(0);
-		-webkit-transition-duration: 0.1s;
-		transition-duration: 0.1s;
-		-webkit-transition-property: transform;
-		transition-property: transform;
-		-webkit-transition-timing-function: ease-out;
-		transition-timing-function: ease-out;
-	}
-	.hvr-icon-forward:hover .hvr-icon,
-	.hvr-icon-forward:focus .hvr-icon,
-	.hvr-icon-forward:active .hvr-icon {
-		-webkit-transform: translateX(4px);
-		transform: translateX(4px);
-	}
+
 </style>
