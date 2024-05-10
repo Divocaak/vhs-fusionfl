@@ -3,17 +3,11 @@
 	import Article from '$lib/Article.svelte';
 	import { tweened } from 'svelte/motion';
 
-	/* TODO from db */
-	const closestEvent = {
-		id: 2,
-		label: 'FUSION 27',
-		date: 'May 3, 2024 19:00:00',
-		place: 'Brno, Zoner BOBYHALL',
-		desc: 'Těšit se můžete na osvědčená jména domácí MMA a postojové scény a tradičně vám přineseme i nové talenty. Svoji MMA premiéru mezi profesionály zde bude mít juniorský mistr Evropy a juniorský mistr světa, Tagir Machmudov. Dále se v rámci FUSION talents představí Lukáš Zavičák, Václav Štěpán, Šimon Bruknar, nebo Václav Žemla. Těšit se můžete i na osvědčená jména postojové scény jako Jan Juříček, Erik Breit či hvězdu organizace Oktagon MMA Radka Roušala. Buďte u začátku nových hvězd MMA a pojďte spolu s námi sledovat jejich cestu.',
-		ppvLink: 'https://sportlive24.tv/product/nR_2cXvR79WpsDN6ClS7ow',
-		ppvPrice: '199',
-		tickets: 'https://www.ticketstream.cz/akce/fusion-28-176062'
-	};
+	export let data;
+	const closestEventId = Object.keys(data.events)[Object.keys(data.events).length - 1];
+	const closestEvent = data.events[closestEventId];
+	closestEvent.id = closestEventId;
+	const eventIsPast = true;
 
 	const dateFormatted = new Date(closestEvent.date).toLocaleDateString('cs-CZ', {
 		month: 'numeric',
@@ -66,18 +60,26 @@
 						<p class="desc">{closestEvent.desc}</p>
 					</div>
 					<div class="col-md-6 col-12">
+						{#if closestEvent.tickets != null}
 						<CustomButton path={closestEvent.tickets} display="block">
 							<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
 						</CustomButton>
+						{/if}
+						{#if closestEvent.ppvLink != null}
 						<CustomButton path={closestEvent.ppvLink} clr="info" display="block"  additionalClasses="my-2">
 							<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
 						</CustomButton>
+						{/if}
 						<CustomButton path="/event/{closestEvent.id}" clr="black" display="block">
+							{#if eventIsPast}
+							<i class="bi bi-eye-fill pe-2"></i>report
+							{:else}
 							<i class="bi bi-person-badge-fill pe-2"></i>fightcard
+							{/if}
 						</CustomButton>
 					</div>
-					<i class="car-btn-icon bi bi-arrow-left"></i>
-					<i class="car-btn-icon bi bi-arrow-right"></i>
+					<!-- <i class="car-btn-icon bi bi-arrow-left"></i>
+					<i class="car-btn-icon bi bi-arrow-right"></i> -->
 				</div>
 			</div>
 	</div>
@@ -207,6 +209,10 @@
 		border-bottom: solid 3px var(--primary-high);
 	}
 
+	.past{
+		filter: saturate(0%);
+	}
+
 	.arrows-holder{
 		position: absolute;
 		bottom: -15%;
@@ -222,6 +228,7 @@
 
 		padding: 2px 60px;
 		transform: skewX(-20deg) scaleY(cos(-20deg));
+		filter: unset !important;
 	}
 
 	.bg-img-container .row {
