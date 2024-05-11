@@ -71,9 +71,9 @@
 	<span class="countdown">{minutes}</span>min
 	<span class="countdown">{seconds}</span>sek
 	<span class="px-2">&nbsp;</span>
-	<CustomButton path={closestEvent.ppvLink} clr="white" txtClr="primary" display="inline-block">
-		<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
-		<span slot="tail">jen {closestEvent.ppvPrice} kč</span>
+	<CustomButton path={closestEvent.ppvLink ?? closestEvent.tickets} clr="white" txtClr="primary" display="inline-block">
+		<i class="bi {closestEvent.ppvLink ? "bi-play-circle-fill" : "bi-ticket-perforated"} pe-2"></i>{closestEvent.ppvLink ? "koupit živý přenos" : "koupit vstupenku"}
+		<span slot="tail">jen {closestEvent.ppvPrice ?? closestEvent.ticketsPrice} kč</span>
 	</CustomButton>
 </div>
 {/if}

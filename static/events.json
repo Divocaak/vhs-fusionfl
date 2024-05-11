@@ -2,12 +2,13 @@
     "2": {
         "id": 2,
         "label": "FUSION 28",
-        "date": "Oct 10, 2024 19:00:00",
+        "date": "Oct 18, 2024 19:00:00",
         "place": "Brno, Zoner BOBYHALL",
         "desc": "Těšit se můžete na osvědčená jména domácí MMA a postojové scény a tradičně vám přineseme i nové talenty. Svoji MMA premiéru mezi profesionály zde bude mít juniorský mistr Evropy a juniorský mistr světa, Tagir Machmudov. Dále se v rámci FUSION talents představí Lukáš Zavičák, Václav Štěpán, Šimon Bruknar, nebo Václav Žemla. Těšit se můžete i na osvědčená jména postojové scény jako Jan Juříček, Erik Breit či hvězdu organizace Oktagon MMA Radka Roušala. Buďte u začátku nových hvězd MMA a pojďte spolu s námi sledovat jejich cestu.",
         "ppvLink": null,
         "ppvPrice": null,
         "tickets": "https://www.ticketstream.cz/akce/fusion-28-176062",
+        "ticketsPrice": "359",
         "aftermovie": null
     },
     "1": {
@@ -19,6 +20,7 @@
         "ppvLink": "https://sportlive24.tv/product/nR_2cXvR79WpsDN6ClS7ow",
         "ppvPrice": "199",
         "tickets": "https://www.ticketstream.cz/akce/fusion-27-174927",
+        "ticketsPrice": "359",
         "aftermovie": "https://google.com"
     }
 }
