@@ -71,9 +71,9 @@
 	<span class="countdown">{minutes}</span>min
 	<span class="countdown">{seconds}</span>sek
 	<span class="px-2">&nbsp;</span>
-	<CustomButton path={closestEvent.ppvLink} clr="white" txtClr="primary" display="inline-block">
-		<i class="bi bi-play-circle-fill pe-2"></i>koupit živý přenos
-		<span slot="tail">jen {closestEvent.ppvPrice} kč</span>
+	<CustomButton path={closestEvent.ppvLink ?? closestEvent.tickets} clr="white" txtClr="primary" display="inline-block">
+		<i class="bi {closestEvent.ppvLink ? "bi-play-circle-fill" : "bi-ticket-perforated"} pe-2"></i>{closestEvent.ppvLink ? "koupit živý přenos" : "koupit vstupenku"}
+		<span slot="tail">jen {closestEvent.ppvPrice ?? closestEvent.ticketsPrice} kč</span>
 	</CustomButton>
 </div>
 {/if}
@@ -128,15 +128,15 @@
 	</div>
 </div>
 
-<div class="subscribe-banner row px-0 px-md-5">
+<div class="subscribe-banner row">
 	<div class="col-12 col-sm-6">
 		<p class="lead">nenechte si ujít novinky</p>
 		<p>Získáte náskok při předprodeji vstupenek</p>
 	</div>
 	<div class="col-12 col-sm-6">
 		<form>
-			<CustomButton path="/" display="inline-block" fontSize="1.2rem">
-				<input slot="head" type="email" placeholder="Váš email" />
+			<CustomButton path="/" display="inline-block">
+				<input slot="head" type="email" placeholder="Váš e-mail" />
 				<i class="bi bi-envelope pe-2"></i>přihlásit odběr
 			</CustomButton>
 		</form>
@@ -212,6 +212,7 @@
 		margin-right: auto;
 		left: 0;
 		right: 0;
+		margin: 0 var(--content-side-margin);
 	}
 
 	.subscribe-banner p {
@@ -219,6 +220,19 @@
 	}
 
 	.subscribe-banner form input {
+		position:relative;
 		border: solid 2px var(--black);
+		padding: 10px;
+		width:250px;
+		font-size: 1rem;
+		color: var(--black);
+	}
+	
+	.subscribe-banner form input::placeholder{
+		color: var(--black);
+	} 
+
+	.subscribe-banner form input:focus {
+		outline:none;
 	}
 </style>

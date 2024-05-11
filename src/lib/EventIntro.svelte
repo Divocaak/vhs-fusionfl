@@ -23,7 +23,7 @@
 						<p class="ww">{dateFormatted}<span>|</span>{event.place}</p>
 						{#if !isDetail}<p class="desc">{event.desc}</p>{/if}
 					</div>
-					<div class="col-md-6 col-12">
+					<div class="col-md-6 col-12 my-auto">
 						{#if event.tickets != null}
 						<CustomButton path={event.tickets} display="block">
 							<i class="bi bi-ticket-perforated pe-2"></i>koupit vstupenku
