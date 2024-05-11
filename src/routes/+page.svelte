@@ -128,7 +128,7 @@
 	</div>
 </div>
 
-<div class="subscribe-banner row px-0 px-md-5">
+<div class="subscribe-banner row">
 	<div class="col-12 col-sm-6">
 		<p class="lead">nenechte si ujít novinky</p>
 		<p>Získáte náskok při předprodeji vstupenek</p>
@@ -212,6 +212,7 @@
 		margin-right: auto;
 		left: 0;
 		right: 0;
+		margin: 0 var(--content-side-margin);
 	}
 
 	.subscribe-banner p {
