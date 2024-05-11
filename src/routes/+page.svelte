@@ -135,8 +135,8 @@
 	</div>
 	<div class="col-12 col-sm-6">
 		<form>
-			<CustomButton path="/" display="inline-block" fontSize="1.2rem">
-				<input slot="head" type="email" placeholder="Váš email" />
+			<CustomButton path="/" display="inline-block">
+				<input slot="head" type="email" placeholder="Váš e-mail" />
 				<i class="bi bi-envelope pe-2"></i>přihlásit odběr
 			</CustomButton>
 		</form>
@@ -220,6 +220,19 @@
 	}
 
 	.subscribe-banner form input {
+		position:relative;
 		border: solid 2px var(--black);
+		padding: 10px;
+		width:250px;
+		font-size: 1rem;
+		color: var(--black);
+	}
+	
+	.subscribe-banner form input::placeholder{
+		color: var(--black);
+	} 
+
+	.subscribe-banner form input:focus {
+		outline:none;
 	}
 </style>
